@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatefulWidget {
@@ -6,6 +7,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String nameEntered;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,12 +20,25 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 100),
-                child: TextField(),
+              Container(
+                margin: EdgeInsets.fromLTRB(20, 0, 20, 50),
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: TextField(
+                  onChanged: (String name) {
+                    nameEntered = name;
+                  },
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  print(nameEntered);
+                },
                 child: Text(
                   "Search",
                   style: TextStyle(color: Colors.black),
